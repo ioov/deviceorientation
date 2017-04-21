@@ -1,1 +1,99 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>重力感应</title>
+</head>
+
+<body>
+	<div id="demo">
+		<p id="p">0</p>
+		<img id="img" style="width: 100%;" src="http://img3.bitautoimg.com/autoalbum/files/20160410/303/13511030323499_4842922_14.JPG" alt="" />
+	</div>
+	<div id="demo1"></div>
+	<script>
+	// window.addEventListener("deviceorientation", function(event) {
+	// 	// 处理event.alpha、event.beta及event.gamma
+	// 	var arr = [parseInt(event.alpha), parseInt(event.beta), parseInt(event.gamma), event.absolute];
+	// 	$("#demo").html(arr.join("-"));
+	// }, false);
+
+	// window.addEventListener("devicemotion", function(event) {
+	// 	// 处理event.alpha、event.beta及event.gamma
+	// 	var arr1 = [parseInt(event.acceleration.x), parseInt(event.acceleration.y), parseInt(event.acceleration.z)];
+	// 	var arr2 = [parseInt(event.accelerationIncludingGravity.x), parseInt(event.accelerationIncludingGravity.y), parseInt(event.accelerationIncludingGravity.z)];
+	// 	var arr3 = [parseInt(event.rotationRate.alpha), parseInt(event.rotationRate.beta), parseInt(event.rotationRate.gamma)];
+	// 	var arr4 = [event.interval];
+	// 	$("#demo2").html(arr1.join("-"));
+	// 	$("#demo2").append("<br>");
+	// 	$("#demo2").append(arr2.join("-"));
+	// 	$("#demo2").append("<br>");
+	// 	$("#demo2").append(arr3.join("-"));
+	// 	$("#demo2").append("<br>");
+	// 	$("#demo2").append(arr4.join("-"));
+	// 	console.log(event);
+	// }, false);
+
+	// window.addEventListener("compassneedscalibration", function(event) {
+	// 	$("#demo3").html('不支持');
+	// }, false);
+
+	// (function(){
+	// 	if (window.DeviceMotionEvent) {
+	// 		window.addEventListener('devicemotion',deviceMotionHandler, false);
+	// 	}
+	// 	var speed = 30;//speed
+	// 	var x = y = z = lastX = lastY = lastZ = 0;
+	// 	function deviceMotionHandler(eventData) {
+	// 		var acceleration =eventData.accelerationIncludingGravity;
+	// 		x = acceleration.x;
+	// 		y = acceleration.y;
+	// 		z = acceleration.z;
+	// 		if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {
+	// 			//简单的摇一摇触发代码
+	// 			alert(1);
+	// 		}
+	// 		lastX = x;
+	// 		lastY = y;
+	// 		lastZ = z;
+	// 	}
+	// })();
+	var imgs = [
+		'http://img3.bitautoimg.com/autoalbum/files/20160410/303/13511030323499_4842922_14.JPG',
+		'http://img3.bitautoimg.com/autoalbum/files/20160410/175/13512717526918_4842930_14.JPG',
+		'http://img2.bitautoimg.com/autoalbum/files/20160410/887/13505188725138_4842913_14.JPG',
+		'http://img3.bitautoimg.com/autoalbum/files/20160410/118/13505411839830_4842914_14.JPG',
+		'http://img4.bitautoimg.com/autoalbum/files/20160410/459/13505745957685_4842915_14.JPG',
+		'http://img4.bitautoimg.com/autoalbum/files/20160410/839/13510383996950_4842919_14.JPG',
+		'http://img1.bitautoimg.com/autoalbum/files/20160410/155/13510615504149_4842920_14.JPG',
+		'http://img2.bitautoimg.com/autoalbum/files/20160410/372/13510837212428_4842921_14.JPG'
+	];
+
+	window.addEventListener("deviceorientation", function(event) {
+		var img = document.getElementById("img");
+		var p = document.getElementById("p");
+		var alpha = event.alpha;
+		var beta = event.beta;
+		var gamma = Math.round(event.gamma);
+		var gamma_abs = Math.abs(gamma);
+		var isLeft = true;
+
+		if (gamma >= 0) {
+			isLeft = true;
+		} else {
+			isLeft = false;
+		}
+		p.html(gamma);
+
+		var index = 0;
+		var len = imgs.length;
+		var threshold = Math.ceil(90 / len);
+		index = Math.floor(gamma_abs / threshold);
+		to_index = isLeft ? index : len - 1 - index;
+		img.attribute("src", imgs[to_index]);
+	});
+	</script>
+</body>
+
+</html>
