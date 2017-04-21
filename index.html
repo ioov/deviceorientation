@@ -84,14 +84,14 @@
 		} else {
 			isLeft = false;
 		}
-		p.html(gamma);
+		p.innerHTML = gamma;
 
 		var index = 0;
 		var len = imgs.length;
 		var threshold = Math.ceil(90 / len);
 		index = Math.floor(gamma_abs / threshold);
 		to_index = isLeft ? index : len - 1 - index;
-		img.attribute("src", imgs[to_index]);
+		img.setAttribute("src", imgs[to_index]);
 	});
 	</script>
 </body>
