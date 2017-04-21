@@ -73,8 +73,8 @@
 	window.addEventListener("deviceorientation", function(event) {
 		var img = document.getElementById("img");
 		var p = document.getElementById("p");
-		var alpha = event.alpha;
-		var beta = event.beta;
+		var alpha = Math.round(event.alpha);
+		var beta = Math.round(event.beta);
 		var gamma = Math.round(event.gamma);
 		var gamma_abs = Math.abs(gamma);
 		var isLeft = true;
