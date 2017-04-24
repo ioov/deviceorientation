@@ -52,7 +52,6 @@
 			if (event.webkitCompassHeading) {
 				alpha = event.webkitCompassHeading; // iOS 使用 event.webkitCompassHeading
 				compass.style.WebkitTransform = 'rotate(-' + alpha + 'deg)';
-				show.innerHTML = alpha;
 			} else {
 				alpha = event.alpha;
 				webkitAlpha = alpha;
