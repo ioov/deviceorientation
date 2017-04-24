@@ -36,7 +36,7 @@
 
 		window.addEventListener('deviceorientation', function(event) {
 			var json = {
-				alpha: event.alpha
+				alpha: event.alpha,
 				webkitCompassHeading: event.webkitCompassHeading
 			}
 			box.innerHTML = JSON.stringify(json);
