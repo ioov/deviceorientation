@@ -41,8 +41,6 @@
 
 	compass.style.height = w + 'px';
 
-	alert(compass.offsetWidth);
-
 	if (window.DeviceOrientationEvent) {
 
 		window.addEventListener('deviceorientation', function(event) {
@@ -66,6 +64,7 @@
 
 			compass.style.Transform = 'rotate(' + alpha + 'deg)';
 			compass.style.WebkitTransform = 'rotate(' + webkitAlpha + 'deg)';
+			compass.style.MozTransform = 'rotate(-' + alpha + 'deg)';
 		});
 
 	} else {
