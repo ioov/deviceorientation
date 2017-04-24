@@ -39,34 +39,34 @@
 
 	compass.style.height = w + 'px';
 
-	if (window.DeviceOrientationEvent) {
+	// if (window.DeviceOrientationEvent) {
 
-		window.addEventListener('deviceorientation', function(event) {
-			var json = {
-				alpha: Math.round(event.alpha),
-				webkitCompassHeading: Math.round(event.webkitCompassHeading)
-			}
-			box.innerHTML = JSON.stringify(json);
+	// 	window.addEventListener('deviceorientation', function(event) {
+	// 		var json = {
+	// 			alpha: Math.round(event.alpha),
+	// 			webkitCompassHeading: Math.round(event.webkitCompassHeading)
+	// 		}
+	// 		box.innerHTML = JSON.stringify(json);
 
-			var alpha;
-			if (event.webkitCompassHeading) {
-				alpha = event.webkitCompassHeading; // iOS 使用 event.webkitCompassHeading
-				compass.style.WebkitTransform = 'rotate(-' + alpha + 'deg)';
-			} else {
-				alpha = event.alpha;
-				webkitAlpha = alpha;
-				if (!window.chrome) {
-					webkitAlpha = alpha - 270;
-				}
-			}
+	// 		var alpha;
+	// 		if (event.webkitCompassHeading) {
+	// 			alpha = event.webkitCompassHeading; // iOS 使用 event.webkitCompassHeading
+	// 			compass.style.WebkitTransform = 'rotate(-' + alpha + 'deg)';
+	// 		} else {
+	// 			alpha = event.alpha;
+	// 			webkitAlpha = alpha;
+	// 			if (!window.chrome) {
+	// 				webkitAlpha = alpha - 270;
+	// 			}
+	// 		}
 
-			compass.style.Transform = 'rotate(' + alpha + 'deg)';
-			compass.style.WebkitTransform = 'rotate(' + webkitAlpha + 'deg)';
-		});
+	// 		compass.style.Transform = 'rotate(' + alpha + 'deg)';
+	// 		compass.style.WebkitTransform = 'rotate(' + webkitAlpha + 'deg)';
+	// 	});
 
-	} else {
-		alert("设备不支持deviceorientation事件")
-	}
+	// } else {
+	// 	alert("设备不支持deviceorientation事件")
+	// }
 	</script>
 </body>
 
