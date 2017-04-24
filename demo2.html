@@ -61,13 +61,9 @@
 				compass.style.WebkitTransform = 'rotate(-' + alpha + 'deg)';
 			} else {
 				alpha = event.alpha;
-				webkitAlpha = alpha;
-				if (!window.chrome) {
-					webkitAlpha = alpha - 270;
-				}
 				compass.style.Transform = 'rotate(' + alpha + 'deg)';
-				compass.style.WebkitTransform = 'rotate(' + webkitAlpha + 'deg)';
-				compass.style.MozTransform = 'rotate(-' + alpha + 'deg)';
+				compass.style.WebkitTransform = 'rotate(' + alpha + 'deg)';
+				// compass.style.MozTransform = 'rotate(-' + alpha + 'deg)';
 			}
 		});
 
