@@ -5,10 +5,11 @@
 	<meta charset="UTF-8" />
 	<title>orientation</title>
 	<style>
-	#box{
+	#box {
 		font-size: 30px;
 		margin-bottom: 20px;
 	}
+
 	#compass {
 		margin: 0 auto;
 		width: 90%;
@@ -52,8 +53,7 @@
 
 			compass.style.Transform = 'rotate(' + alpha + 'deg)';
 			compass.style.WebkitTransform = 'rotate(' + webkitAlpha + 'deg)';
-			compass.style.MozTransform = 'rotate(-' + alpha + 'deg)';
-		}, false);
+		});
 
 	} else {
 		alert("设备不支持deviceorientation事件")
