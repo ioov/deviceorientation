@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>deviceorientation</title>
+</head>
+<body>
+	<div id="box1"></div>
+	<img id="box2" style="width: 100%;" src="http://img3.bitautoimg.com/autoalbum/files/20160410/303/13511030323499_4842922_14.JPG" alt="" />
+	<script>
+	window.addEventListener("deviceorientation", function(event) {
+		// 处理event.alpha、event.beta及event.gamma
+		var json = {
+			alpha: Math.round(event.alpha),
+			beta: Math.round(event.beta),
+			gamma: Math.round(event.gamma),
+			absolute: !!event.absolute
+		};
+		$("#box1").html(JSON.stringify(json));
+	});
+	</script>
+
+	<script>
+	var imgs = [
+		'http://img3.bitautoimg.com/autoalbum/files/20160410/303/13511030323499_4842922_14.JPG',
+		'http://img3.bitautoimg.com/autoalbum/files/20160410/175/13512717526918_4842930_14.JPG',
+		'http://img2.bitautoimg.com/autoalbum/files/20160410/887/13505188725138_4842913_14.JPG',
+		'http://img3.bitautoimg.com/autoalbum/files/20160410/118/13505411839830_4842914_14.JPG',
+		'http://img4.bitautoimg.com/autoalbum/files/20160410/459/13505745957685_4842915_14.JPG',
+		'http://img4.bitautoimg.com/autoalbum/files/20160410/839/13510383996950_4842919_14.JPG',
+		'http://img1.bitautoimg.com/autoalbum/files/20160410/155/13510615504149_4842920_14.JPG',
+		'http://img2.bitautoimg.com/autoalbum/files/20160410/372/13510837212428_4842921_14.JPG'
+	];
+	window.addEventListener("deviceorientation", function(event) {
+		var img = document.getElementById("box2");
+		var alpha = Math.round(event.alpha);
+		var beta = Math.round(event.beta);
+		var gamma = Math.round(event.gamma);
+		var gamma_abs = Math.abs(gamma);
+		var isLeft = true;
+
+		if (gamma >= 0) {
+			isLeft = true;
+		} else {
+			isLeft = false;
+		}
+
+		var index = 0;
+		var len = imgs.length;
+		var threshold = Math.ceil(90 / len);
+		index = Math.floor(gamma_abs / threshold);
+		to_index = isLeft ? index : len - 1 - index;
+		img.setAttribute("src", imgs[to_index]);
+	});
+	</script>
+</body>
+</html>
