@@ -5,6 +5,10 @@
 	<meta charset="UTF-8" />
 	<title>orientation</title>
 	<style>
+	#box{
+		font-size: 30px;
+		margin-bottom: 20px;
+	}
 	#compass {
 		margin: 0 auto;
 		width: 90%;
@@ -18,9 +22,11 @@
 </head>
 
 <body>
+	<div id="box"></div>
 	<div id="compass"></div>
 	<script>
-	var compass = document.getElementById('compass'),
+	var box = document.getElementById("box"),
+		compass = document.getElementById('compass'),
 		w = compass.offsetWidth;
 
 	compass.style.height = w + 'px';
@@ -28,10 +34,12 @@
 	if (window.DeviceOrientationEvent) {
 
 		window.addEventListener('deviceorientation', function(event) {
+
+			box.innerHTML = JSON.stringify(event);
+
 			var alpha;
-			//     判斷是否為 iOS 裝置
 			if (event.webkitCompassHeading) {
-				alpha = event.webkitCompassHeading; // iOS 裝置必須使用 event.webkitCompassHeading
+				alpha = event.webkitCompassHeading; // iOS 使用 event.webkitCompassHeading
 				compass.style.WebkitTransform = 'rotate(-' + alpha + 'deg)';
 				show.innerHTML = alpha;
 			} else {
