@@ -9,6 +9,7 @@
 	<img id="box2" style="width: 100%;" src="http://img3.bitautoimg.com/autoalbum/files/20160410/303/13511030323499_4842922_14.JPG" alt="" />
 	<script>
 	window.addEventListener("deviceorientation", function(event) {
+		var box = document.getElementById("box1");
 		// 处理event.alpha、event.beta及event.gamma
 		var json = {
 			alpha: Math.round(event.alpha),
@@ -16,7 +17,7 @@
 			gamma: Math.round(event.gamma),
 			absolute: !!event.absolute
 		};
-		$("#box1").html(JSON.stringify(json));
+		box.html(JSON.stringify(json));
 	});
 	</script>
 
