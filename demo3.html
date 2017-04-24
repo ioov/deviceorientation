@@ -12,8 +12,11 @@
 </head>
 
 <body>
+	<h2>acceleration: </h2>
 	<div id="box1"></div>
+	<h2>accelerationIncludingGravity: </h2>
 	<div id="box2"></div>
+	<h2>rotationRate: </h2>
 	<div id="box3"></div>
 	<div id="box4"></div>
 	<script>
@@ -35,7 +38,9 @@
 				beta: Math.round(event.rotationRate.beta),
 				gamma: Math.round(event.rotationRate.gamma)
 			};
-			var interval = event.interval;
+			var interval = {
+				interval: event.interval
+			};
 
 			var box1 = document.getElementById("box1");
 			var box2 = document.getElementById("box2");
