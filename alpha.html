@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>deviceorientation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<style>
+	#box1 {
+		font-size: 40px;
+		margin-bottom: 20px;
+		word-break: break-all;
+		word-wrap: break-word;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="box1"></div>
+	<script>
+	if (window.DeviceOrientationEvent) {
+		window.addEventListener("deviceorientation", function(event) {
+			var box = document.getElementById("box1");
+			// 处理event.alpha、event.beta及event.gamma
+			var json = {
+				alpha: Math.round(event.alpha)
+			};
+			box.innerHTML = JSON.stringify(json);
+		});
+	} else {
+		alert('本设备不支持deviceorientation事件');
+	}
+	</script>
+</body>
+
+</html>
