@@ -50,6 +50,7 @@
 
 		window.addEventListener('deviceorientation', function(event) {
 			var json = {
+				absolute: !!event.absolute,
 				alpha: Math.round(event.alpha),
 				webkitCompassHeading: Math.round(event.webkitCompassHeading)
 			}
