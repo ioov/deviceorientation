@@ -21,11 +21,11 @@
 	}
 
 	.layer {
-		width: 400px;
-		height: 400px;
+		width: 300px;
+		height: 300px;
 		position: absolute;
 		color: #000;
-		line-height: 400px;
+		line-height: 300px;
 		font-size: 100px;
 		text-align: center;
 		background: radial-gradient(transparent 30%, rgba(0, 0, 0, .3) 100%);
@@ -34,38 +34,32 @@
 	.layer:nth-of-type(1) {
 		top: 0;
 		left: 0;
-		opacity: 0.2;
-		transform: translateZ(400px);
 	}
 
 	.layer:nth-of-type(2) {
 		top: 0px;
-		left: 400px;
-		opacity: 0.4;
+		left: 300px;
 		transform: rotateY(-90deg);
 		transform-origin: left;
 	}
 
 	.layer:nth-of-type(3) {
-		top: 400px;
+		top: 300px;
 		left: 0;
-		opacity: 0.6;
 		transform: rotateX(90deg);
 		transform-origin: top;
 	}
 
 	.layer:nth-of-type(4) {
 		top: 0;
-		left: -400px;
-		opacity: 0.8;
+		left: -300px;
 		transform: rotateY(90deg);
 		transform-origin: right;
 	}
 
 	.layer:nth-of-type(5) {
-		top: -400px;
+		top: -300px;
 		left: 0;
-		opacity: 0.4;
 		transform: rotateX(-90deg);
 		transform-origin: bottom;
 	}
@@ -73,7 +67,7 @@
 	.layer:nth-of-type(6) {
 		top: 0;
 		left: 0;
-		opacity: 0.4;
+		transform: translateZ(300px);
 	}
 	</style>
 </head>
@@ -88,9 +82,9 @@
 		<div class="layer">6</div>
 	</div>
 	<script>
-	var box = document.getElementById('#box');
-	if (window.DeviceOrientationEvent) {
+	var box = document.getElementById('box');
 
+	if (window.DeviceOrientationEvent) {
 		window.addEventListener('deviceorientation', function(event) {
 			var alpha = event.alpha,
 				beta = event.beta,
