@@ -18,6 +18,7 @@
 		perspective: 1000px;
 		perspective-origin: 50% 50%;
 		transform-style: preserve-3d;
+		transform-origin: center center 200px;
 	}
 
 	.layer {
@@ -73,13 +74,15 @@
 </head>
 
 <body>
-	<div class="box" id="box">
-		<div class="layer">1</div>
-		<div class="layer">2</div>
-		<div class="layer">3</div>
-		<div class="layer">4</div>
-		<div class="layer">5</div>
-		<div class="layer">6</div>
+	<div class="wrap">
+		<div class="box" id="box">
+			<div class="layer">1</div>
+			<div class="layer">2</div>
+			<div class="layer">3</div>
+			<div class="layer">4</div>
+			<div class="layer">5</div>
+			<div class="layer">6</div>
+		</div>
 	</div>
 	<script>
 	var box = document.getElementById('box');
