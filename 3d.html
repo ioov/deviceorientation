@@ -5,96 +5,90 @@
 	<meta charset="UTF-8" />
 	<title>3D</title>
 	<style>
-	.camera {
-		margin: 50px auto;
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	.box {
+		margin: 50% auto;
 		width: 400px;
 		height: 400px;
-		perspective-origin: 50% 50%;
-		-moz-perspective-origin: 50% 50%;
-		-webkit-perspective-origin: 50% 50%;
-		perspective: 1000px;
-		-moz-perspective: 1000px;
-		-webkit-perspective: 1000px;
-	}
-
-	.space {
 		position: relative;
-		width: 100%;
-		height: 100%;
+		perspective: 1000px;
+		perspective-origin: 50% 50%;
 		transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-		-webkit-transform-style: preserve-3d;
-		transform-origin: center center center;
-		-moz-transform-origin: center center center;
-		-webkit-transform-origin: center center center;
 	}
 
-	.space div {
+	.layer {
+		width: 400px;
+		height: 400px;
 		position: absolute;
-		width: 200px;
-		height: 200px;
-		font-size: 50px;
+		color: #000;
+		line-height: 400px;
+		font-size: 100px;
 		text-align: center;
-		line-height: 200px;
+		background: radial-gradient(transparent 30%, rgba(0, 0, 0, .3) 100%);
 	}
 
-	.box1 {
-		background: rgba(255, 0, 0, .2);
-		transform: translateX(100px) translateY(100px);
-		-moz-transform: translateX(100px) translateY(100px);
-		-webkit-transform: translateX(100px) translateY(100px);
+	.layer:nth-of-type(1) {
+		top: 0;
+		left: 0;
+		opacity: 0.2;
+		transform: translateZ(400px);
 	}
 
-	.box2 {
-		background: rgba(255, 255, 0, .2);
-		transform: translateX(0) translateY(100px) rotateY(90deg);
-		-moz-transform: translateX(0) translateY(100px) rotateY(90deg);
-		-webkit-transform: translateX(0) translateY(100px) rotateY(90deg);
+	.layer:nth-of-type(2) {
+		top: 0px;
+		left: 400px;
+		opacity: 0.4;
+		transform: rotateY(-90deg);
+		transform-origin: left;
 	}
 
-	.box3 {
-		background: rgba(0, 255, 0, .2);
-		transform: translateX(100px) translateY(100px) translateZ(-100px) rotateY(180deg);
-		-moz-transform: translateX(100px) translateY(100px) translateZ(-100px) rotateY(180deg);
-		-webkit-transform: translateX(100px) translateY(100px) translateZ(-100px) rotateY(180deg);
+	.layer:nth-of-type(3) {
+		top: 400px;
+		left: 0;
+		opacity: 0.6;
+		transform: rotateX(90deg);
+		transform-origin: top;
 	}
 
-	.box4 {
-		background: rgba(255, 0, 255, .2);
-		transform: translateX(200px) translateY(100px) rotateY(-90deg);
-		-moz-transform: translateX(200px) translateY(100px) rotateY(-90deg);
-		-webkit-transform: translateX(200px) translateY(100px) rotateY(-90deg);
+	.layer:nth-of-type(4) {
+		top: 0;
+		left: -400px;
+		opacity: 0.8;
+		transform: rotateY(90deg);
+		transform-origin: right;
 	}
 
-	.box5 {
-		background: rgba(0, 0, 255, .2);
-		transform: translateX(100px) translateY(0) rotateX(90deg);
-		-moz-transform: translateX(100px) translateY(0) rotateX(90deg);
-		-webkit-transform: translateX(100px) translateY(0) rotateX(90deg);
+	.layer:nth-of-type(5) {
+		top: -400px;
+		left: 0;
+		opacity: 0.4;
+		transform: rotateX(-90deg);
+		transform-origin: bottom;
 	}
 
-	.box6 {
-		background: rgba(0, 255, 255, .2);
-		transform: translateX(100px) translateY(200px) rotateX(-90deg);
-		-moz-transform: translateX(100px) translateY(200px) rotateX(-90deg);
-		-webkit-transform: translateX(100px) translateY(200px) rotateX(-90deg);
+	.layer:nth-of-type(6) {
+		top: 0;
+		left: 0;
+		opacity: 0.4;
 	}
 	</style>
 </head>
 
 <body>
-	<div class="camera">
-		<div class="space">
-			<div class="box1">1</div>
-			<div class="box2">2</div>
-			<div class="box3">3</div>
-			<div class="box4">4</div>
-			<div class="box5">5</div>
-			<div class="box6">6</div>
-		</div>
+	<div class="box" id="box">
+		<div class="layer">1</div>
+		<div class="layer">2</div>
+		<div class="layer">3</div>
+		<div class="layer">4</div>
+		<div class="layer">5</div>
+		<div class="layer">6</div>
 	</div>
 	<script>
-	var space = document.querySelectorAll('.space');
+	var box = document.getElementById('#box');
 	if (window.DeviceOrientationEvent) {
 
 		window.addEventListener('deviceorientation', function(event) {
@@ -102,9 +96,9 @@
 				beta = event.beta,
 				gamma = event.gamma;
 
-			space[0].style.webkitTransform = 'rotateX(' + beta + 'deg) rotateY(' + gamma + 'deg) rotateZ(' + alpha + 'deg)';
-			space[0].style.transform = 'rotateX(' + beta + 'deg) rotateY(' + gamma + 'deg) rotateZ(' + alpha + 'deg)';
-			space[0].style.mozTransform = 'rotateX(' + beta + 'deg) rotateY(' + gamma + 'deg) rotateZ(' + alpha + 'deg)';
+			box[0].style.webkitTransform = 'rotateX(' + beta + 'deg) rotateY(' + gamma + 'deg) rotateZ(' + alpha + 'deg)';
+			box[0].style.transform = 'rotateX(' + beta + 'deg) rotateY(' + gamma + 'deg) rotateZ(' + alpha + 'deg)';
+			box[0].style.mozTransform = 'rotateX(' + beta + 'deg) rotateY(' + gamma + 'deg) rotateZ(' + alpha + 'deg)';
 
 		}, false);
 	} else {
